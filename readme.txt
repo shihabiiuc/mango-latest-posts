@@ -104,10 +104,10 @@ Yes. Use the `mango_lp_query_args` filter to change the `WP_Query` arguments.
 
 == Screenshots ==
 
-1. The equal-height grid layout.
-2. The masonry grid layout.
-3. The Mango Blog Grid widget settings in Elementor.
-4. The Mango Blog Grid block settings in the block editor.
+1. Gutenberg block: equal-height grid with a custom button color, and the block's color and button settings.
+2. Gutenberg block: masonry layout with 4 columns, where images keep their original proportions.
+3. Elementor widget: content settings (number of posts, layout, columns, excerpt length, button text).
+4. Elementor widget: style options, here changing the button background color.
 
 == Changelog ==
 

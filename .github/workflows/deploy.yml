@@ -1,0 +1,29 @@
+# Deploys a new release to WordPress.org when a version tag (e.g. 1.0.1) is pushed.
+# Copies the plugin to SVN trunk/ and tags/<version>/, and .wordpress-org/ to SVN assets/.
+# Files marked export-ignore in .gitattributes are not deployed.
+name: Deploy to WordPress.org
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  deploy:
+    name: Deploy release
+    runs-on: ubuntu-latest
+    # Does nothing until the repository variable WPORG_APPROVED is set to "true".
+    if: vars.WPORG_APPROVED == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Subversion
+        run: sudo apt-get update && sudo apt-get install -y subversion
+
+      - name: Deploy to WordPress.org
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: mango-latest-posts

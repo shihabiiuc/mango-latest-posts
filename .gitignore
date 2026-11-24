@@ -1,0 +1,15 @@
+# Reference files only, not part of the plugin
+remove_me/
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Dependencies and build artifacts
+node_modules/
+vendor/
+*.zip
+*.log

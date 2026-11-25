@@ -2,7 +2,7 @@
 /**
  * Shared renderer used by the Elementor widget, the Gutenberg block and the shortcode.
  *
- * @package MangoLatestPosts
+ * @package ShihabiiucPostGrid
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Builds the post query and prints the blog grid markup.
  */
-class Mango_LP_Renderer {
+class Shihabiiuc_PG_Renderer {
 
-	const IMAGE_SIZE = 'mango-lp-card';
+	const IMAGE_SIZE = 'shihabiiuc-pg-card';
 
 	const MAX_POSTS   = 24;
 	const MAX_COLUMNS = 4;
@@ -27,20 +27,20 @@ class Mango_LP_Renderer {
 	 * @var array<string, array{0: string, 1: string}> Setting => [ CSS variable, sanitizer ].
 	 */
 	const STYLE_VARS = array(
-		'title_color'       => array( '--mango-lp-title-color', 'color' ),
-		'title_font_size'   => array( '--mango-lp-title-size', 'length' ),
-		'excerpt_color'     => array( '--mango-lp-excerpt-color', 'color' ),
-		'excerpt_font_size' => array( '--mango-lp-excerpt-size', 'length' ),
-		'button_bg'         => array( '--mango-lp-button-bg', 'color' ),
-		'button_color'      => array( '--mango-lp-button-color', 'color' ),
-		'button_font_size'  => array( '--mango-lp-button-size', 'length' ),
-		'button_padding'    => array( '--mango-lp-button-padding', 'box' ),
-		'card_bg'           => array( '--mango-lp-card-bg', 'color' ),
-		'border_color'      => array( '--mango-lp-border-color', 'color' ),
-		'border_width'      => array( '--mango-lp-border-width', 'length' ),
-		'border_radius'     => array( '--mango-lp-radius', 'length' ),
-		'card_padding'      => array( '--mango-lp-card-padding', 'box' ),
-		'gap'               => array( '--mango-lp-gap', 'length' ),
+		'title_color'       => array( '--shihabiiuc-pg-title-color', 'color' ),
+		'title_font_size'   => array( '--shihabiiuc-pg-title-size', 'length' ),
+		'excerpt_color'     => array( '--shihabiiuc-pg-excerpt-color', 'color' ),
+		'excerpt_font_size' => array( '--shihabiiuc-pg-excerpt-size', 'length' ),
+		'button_bg'         => array( '--shihabiiuc-pg-button-bg', 'color' ),
+		'button_color'      => array( '--shihabiiuc-pg-button-color', 'color' ),
+		'button_font_size'  => array( '--shihabiiuc-pg-button-size', 'length' ),
+		'button_padding'    => array( '--shihabiiuc-pg-button-padding', 'box' ),
+		'card_bg'           => array( '--shihabiiuc-pg-card-bg', 'color' ),
+		'border_color'      => array( '--shihabiiuc-pg-border-color', 'color' ),
+		'border_width'      => array( '--shihabiiuc-pg-border-width', 'length' ),
+		'border_radius'     => array( '--shihabiiuc-pg-radius', 'length' ),
+		'card_padding'      => array( '--shihabiiuc-pg-card-padding', 'box' ),
+		'gap'               => array( '--shihabiiuc-pg-gap', 'length' ),
 	);
 
 	/**
@@ -57,7 +57,7 @@ class Mango_LP_Renderer {
 			'categories'      => array(),
 			'offset'          => 0,
 			'exclude_current' => true,
-			'read_more_text'  => __( 'Read More', 'mango-latest-posts' ),
+			'read_more_text'  => __( 'Read More', 'shihabiiuc-post-grid' ),
 			'title_tag'       => 'h3',
 			// When false, no inline CSS variables are printed (Elementor outputs its own CSS).
 			'inline_styles'   => true,
@@ -91,7 +91,7 @@ class Mango_LP_Renderer {
 
 		$args['read_more_text'] = sanitize_text_field( (string) $args['read_more_text'] );
 		if ( '' === $args['read_more_text'] ) {
-			$args['read_more_text'] = __( 'Read More', 'mango-latest-posts' );
+			$args['read_more_text'] = __( 'Read More', 'shihabiiuc-post-grid' );
 		}
 
 		$allowed_tags      = array( 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div' );
@@ -125,16 +125,16 @@ class Mango_LP_Renderer {
 		$args  = self::normalize( $args );
 		$posts = self::get_posts( $args );
 
-		wp_enqueue_style( 'mango-lp-style' );
+		wp_enqueue_style( 'shihabiiuc-pg-style' );
 
 		if ( empty( $posts ) ) {
 			if ( current_user_can( 'edit_posts' ) ) {
-				echo '<p class="mango-lp-empty">' . esc_html__( 'Mango Latest Posts: no posts found for these settings.', 'mango-latest-posts' ) . '</p>';
+				echo '<p class="shihabiiuc-pg-empty">' . esc_html__( 'Shihabiiuc Post Grid: no posts found for these settings.', 'shihabiiuc-post-grid' ) . '</p>';
 			}
 			return;
 		}
 
-		$classes = array( 'mango-lp', 'mango-lp--' . $args['layout'] );
+		$classes = array( 'shihabiiuc-pg', 'shihabiiuc-pg--' . $args['layout'] );
 		$style   = $args['inline_styles'] ? self::build_inline_style( $args ) : '';
 		$tag     = $args['title_tag'];
 		?>
@@ -145,21 +145,21 @@ class Mango_LP_Renderer {
 				$title     = get_the_title( $post );
 				$excerpt   = $args['excerpt_words'] > 0 ? self::get_excerpt( $post, $args['excerpt_words'] ) : '';
 				?>
-				<article class="mango-lp__card">
-					<a class="mango-lp__thumb" href="<?php echo esc_url( $permalink ); ?>" tabindex="-1" aria-hidden="true">
+				<article class="shihabiiuc-pg__card">
+					<a class="shihabiiuc-pg__thumb" href="<?php echo esc_url( $permalink ); ?>" tabindex="-1" aria-hidden="true">
 						<?php self::output_image( $post, $args['layout'] ); ?>
 					</a>
-					<div class="mango-lp__body">
-						<<?php echo tag_escape( $tag ); ?> class="mango-lp__title">
+					<div class="shihabiiuc-pg__body">
+						<<?php echo tag_escape( $tag ); ?> class="shihabiiuc-pg__title">
 							<a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $title ); ?></a>
 						</<?php echo tag_escape( $tag ); ?>>
 						<?php if ( '' !== $excerpt ) : ?>
-							<p class="mango-lp__excerpt"><?php echo esc_html( $excerpt ); ?></p>
+							<p class="shihabiiuc-pg__excerpt"><?php echo esc_html( $excerpt ); ?></p>
 						<?php endif; ?>
-						<a class="mango-lp__button" href="<?php echo esc_url( $permalink ); ?>">
-							<span class="mango-lp__button-text"><?php echo esc_html( $args['read_more_text'] ); ?></span>
-							<span class="mango-lp__sr-only">: <?php echo esc_html( $title ); ?></span>
-							<svg class="mango-lp__chevron" aria-hidden="true" focusable="false" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+						<a class="shihabiiuc-pg__button" href="<?php echo esc_url( $permalink ); ?>">
+							<span class="shihabiiuc-pg__button-text"><?php echo esc_html( $args['read_more_text'] ); ?></span>
+							<span class="shihabiiuc-pg__sr-only">: <?php echo esc_html( $title ); ?></span>
+							<svg class="shihabiiuc-pg__chevron" aria-hidden="true" focusable="false" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
 						</a>
 					</div>
 				</article>
@@ -198,12 +198,12 @@ class Mango_LP_Renderer {
 		}
 
 		/**
-		 * Filter the WP_Query arguments used by Mango Latest Posts.
+		 * Filter the WP_Query arguments used by Shihabiiuc Post Grid.
 		 *
 		 * @param array $query_args WP_Query arguments.
 		 * @param array $args       Normalized widget/block/shortcode settings.
 		 */
-		$query_args = apply_filters( 'mango_lp_query_args', $query_args, $args );
+		$query_args = apply_filters( 'shihabiiuc_pg_query_args', $query_args, $args );
 
 		$query = new WP_Query( $query_args );
 		$posts = array();
@@ -232,7 +232,7 @@ class Mango_LP_Renderer {
 		$thumb_id = get_post_thumbnail_id( $post );
 
 		if ( $thumb_id ) {
-			$image = wp_get_attachment_image( $thumb_id, $size, false, array( 'class' => 'mango-lp__img' ) );
+			$image = wp_get_attachment_image( $thumb_id, $size, false, array( 'class' => 'shihabiiuc-pg__img' ) );
 			if ( $image ) {
 				// Core-generated and escaped; wp_kses_post() would strip srcset/sizes.
 				echo $image; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -245,11 +245,11 @@ class Mango_LP_Renderer {
 		 *
 		 * @param string $url Placeholder image URL.
 		 */
-		$placeholder = apply_filters( 'mango_lp_placeholder_image_url', MANGO_LP_URL . 'assets/images/default-image.jpg' );
+		$placeholder = apply_filters( 'shihabiiuc_pg_placeholder_image_url', SHIHABIIUC_PG_URL . 'assets/images/default-image.jpg' );
 
 		// phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage -- Bundled plugin asset, not a media library attachment.
 		printf(
-			'<img class="mango-lp__img mango-lp__img--placeholder" src="%s" width="1200" height="628" alt="" loading="lazy" decoding="async" />',
+			'<img class="shihabiiuc-pg__img shihabiiuc-pg__img--placeholder" src="%s" width="1200" height="628" alt="" loading="lazy" decoding="async" />',
 			esc_url( $placeholder )
 		);
 	}
@@ -283,8 +283,8 @@ class Mango_LP_Renderer {
 		$vars = array();
 
 		if ( 3 !== $args['columns'] ) {
-			$vars[] = '--mango-lp-columns:' . $args['columns'];
-			$vars[] = '--mango-lp-columns-tablet:' . min( 2, $args['columns'] );
+			$vars[] = '--shihabiiuc-pg-columns:' . $args['columns'];
+			$vars[] = '--shihabiiuc-pg-columns-tablet:' . min( 2, $args['columns'] );
 		}
 
 		foreach ( self::STYLE_VARS as $key => $config ) {

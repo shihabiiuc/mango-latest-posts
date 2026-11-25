@@ -1,14 +1,14 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "mango-latest-posts/blog-grid",
+	"name": "shihabiiuc-post-grid/blog-grid",
 	"version": "1.0.0",
-	"title": "Mango Blog Grid",
+	"title": "Shihabiiuc Post Grid",
 	"category": "widgets",
 	"icon": "grid-view",
 	"description": "Show your latest blog posts in a card grid or masonry layout.",
 	"keywords": [ "latest posts", "blog", "recent posts", "grid", "masonry" ],
-	"textdomain": "mango-latest-posts",
+	"textdomain": "shihabiiuc-post-grid",
 	"supports": {
 		"html": false,
 		"align": [ "wide", "full" ]
@@ -40,5 +40,5 @@
 		"gap": { "type": "number" }
 	},
 	"editorScript": "file:./index.js",
-	"style": "mango-lp-style"
+	"style": "shihabiiuc-pg-style"
 }

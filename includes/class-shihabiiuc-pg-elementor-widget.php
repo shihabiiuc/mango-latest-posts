@@ -1,8 +1,8 @@
 <?php
 /**
- * Elementor widget: Mango Blog Grid.
+ * Elementor widget: Shihabiiuc Post Grid.
  *
- * @package MangoLatestPosts
+ * @package ShihabiiucPostGrid
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,7 +19,7 @@ use Elementor\Widget_Base;
  * Style controls write CSS custom properties (or plain CSS) through Elementor's
  * own CSS output, so changes preview instantly and support breakpoints.
  */
-class Mango_LP_Elementor_Widget extends Widget_Base {
+class Shihabiiuc_PG_Elementor_Widget extends Widget_Base {
 
 	/**
 	 * Widget slug.
@@ -27,7 +27,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 	 * @return string
 	 */
 	public function get_name() {
-		return 'mango_blog_grid';
+		return 'shihabiiuc_post_grid';
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 	 * @return string
 	 */
 	public function get_title() {
-		return __( 'Mango Blog Grid', 'mango-latest-posts' );
+		return __( 'Shihabiiuc Post Grid', 'shihabiiuc-post-grid' );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 	 * @return string[]
 	 */
 	public function get_keywords() {
-		return array( 'posts', 'blog', 'latest', 'recent', 'grid', 'masonry', 'mango' );
+		return array( 'posts', 'blog', 'latest', 'recent', 'grid', 'masonry', 'shihabiiuc' );
 	}
 
 	/**
@@ -72,7 +72,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 	 * @return string[]
 	 */
 	public function get_style_depends() {
-		return array( 'mango-lp-style' );
+		return array( 'shihabiiuc-pg-style' );
 	}
 
 	/**
@@ -82,8 +82,8 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->register_content_controls();
 		$this->register_query_controls();
 		$this->register_card_style_controls();
-		$this->register_text_style_controls( 'title', __( 'Title', 'mango-latest-posts' ), '.mango-lp__title', '#222222' );
-		$this->register_text_style_controls( 'excerpt', __( 'Excerpt', 'mango-latest-posts' ), '.mango-lp__excerpt', '#424242' );
+		$this->register_text_style_controls( 'title', __( 'Title', 'shihabiiuc-post-grid' ), '.shihabiiuc-pg__title', '#222222' );
+		$this->register_text_style_controls( 'excerpt', __( 'Excerpt', 'shihabiiuc-post-grid' ), '.shihabiiuc-pg__excerpt', '#424242' );
 		$this->register_button_style_controls();
 	}
 
@@ -94,7 +94,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => __( 'Layout', 'mango-latest-posts' ),
+				'label' => __( 'Layout', 'shihabiiuc-post-grid' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -102,10 +102,10 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			'posts',
 			array(
-				'label'   => __( 'Number of posts', 'mango-latest-posts' ),
+				'label'   => __( 'Number of posts', 'shihabiiuc-post-grid' ),
 				'type'    => Controls_Manager::NUMBER,
 				'min'     => 1,
-				'max'     => Mango_LP_Renderer::MAX_POSTS,
+				'max'     => Shihabiiuc_PG_Renderer::MAX_POSTS,
 				'default' => 3,
 			)
 		);
@@ -113,21 +113,21 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			'layout',
 			array(
-				'label'       => __( 'Layout', 'mango-latest-posts' ),
+				'label'       => __( 'Layout', 'shihabiiuc-post-grid' ),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'grid',
 				'options'     => array(
-					'grid'    => __( 'Equal-height grid', 'mango-latest-posts' ),
-					'masonry' => __( 'Masonry grid', 'mango-latest-posts' ),
+					'grid'    => __( 'Equal-height grid', 'shihabiiuc-post-grid' ),
+					'masonry' => __( 'Masonry grid', 'shihabiiuc-post-grid' ),
 				),
-				'description' => __( 'Grid crops images to 1200 × 628. Masonry keeps their original proportions.', 'mango-latest-posts' ),
+				'description' => __( 'Grid crops images to 1200 × 628. Masonry keeps their original proportions.', 'shihabiiuc-post-grid' ),
 			)
 		);
 
 		$this->add_responsive_control(
 			'columns',
 			array(
-				'label'          => __( 'Columns', 'mango-latest-posts' ),
+				'label'          => __( 'Columns', 'shihabiiuc-post-grid' ),
 				'type'           => Controls_Manager::SELECT,
 				'default'        => '3',
 				'tablet_default' => '2',
@@ -139,7 +139,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 					'4' => '4',
 				),
 				'selectors'      => array(
-					'{{WRAPPER}} .mango-lp' => '--mango-lp-cols: {{VALUE}};',
+					'{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-cols: {{VALUE}};',
 				),
 			)
 		);
@@ -147,28 +147,28 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			'excerpt_words',
 			array(
-				'label'       => __( 'Excerpt length (words)', 'mango-latest-posts' ),
+				'label'       => __( 'Excerpt length (words)', 'shihabiiuc-post-grid' ),
 				'type'        => Controls_Manager::NUMBER,
 				'min'         => 0,
-				'max'         => Mango_LP_Renderer::MAX_WORDS,
+				'max'         => Shihabiiuc_PG_Renderer::MAX_WORDS,
 				'default'     => 30,
-				'description' => __( 'Set to 0 to hide the excerpt.', 'mango-latest-posts' ),
+				'description' => __( 'Set to 0 to hide the excerpt.', 'shihabiiuc-post-grid' ),
 			)
 		);
 
 		$this->add_control(
 			'read_more_text',
 			array(
-				'label'   => __( 'Button text', 'mango-latest-posts' ),
+				'label'   => __( 'Button text', 'shihabiiuc-post-grid' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'Read More', 'mango-latest-posts' ),
+				'default' => __( 'Read More', 'shihabiiuc-post-grid' ),
 			)
 		);
 
 		$this->add_control(
 			'title_tag',
 			array(
-				'label'   => __( 'Title HTML tag', 'mango-latest-posts' ),
+				'label'   => __( 'Title HTML tag', 'shihabiiuc-post-grid' ),
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'h3',
 				'options' => array(
@@ -193,7 +193,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_query',
 			array(
-				'label' => __( 'Query', 'mango-latest-posts' ),
+				'label' => __( 'Query', 'shihabiiuc-post-grid' ),
 				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -201,35 +201,35 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			'categories',
 			array(
-				'label'       => __( 'Categories', 'mango-latest-posts' ),
+				'label'       => __( 'Categories', 'shihabiiuc-post-grid' ),
 				'type'        => Controls_Manager::SELECT2,
 				'multiple'    => true,
 				'label_block' => true,
 				'options'     => $this->get_category_options(),
-				'description' => __( 'Leave empty to show posts from all categories.', 'mango-latest-posts' ),
+				'description' => __( 'Leave empty to show posts from all categories.', 'shihabiiuc-post-grid' ),
 			)
 		);
 
 		$this->add_control(
 			'offset',
 			array(
-				'label'       => __( 'Offset', 'mango-latest-posts' ),
+				'label'       => __( 'Offset', 'shihabiiuc-post-grid' ),
 				'type'        => Controls_Manager::NUMBER,
 				'min'         => 0,
-				'max'         => Mango_LP_Renderer::MAX_OFFSET,
+				'max'         => Shihabiiuc_PG_Renderer::MAX_OFFSET,
 				'default'     => 0,
-				'description' => __( 'Number of newest posts to skip.', 'mango-latest-posts' ),
+				'description' => __( 'Number of newest posts to skip.', 'shihabiiuc-post-grid' ),
 			)
 		);
 
 		$this->add_control(
 			'exclude_current',
 			array(
-				'label'        => __( 'Hide current post', 'mango-latest-posts' ),
+				'label'        => __( 'Hide current post', 'shihabiiuc-post-grid' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'default'      => 'yes',
 				'return_value' => 'yes',
-				'description'  => __( 'On single post pages, do not list the post being viewed.', 'mango-latest-posts' ),
+				'description'  => __( 'On single post pages, do not list the post being viewed.', 'shihabiiuc-post-grid' ),
 			)
 		);
 
@@ -243,7 +243,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_card',
 			array(
-				'label' => __( 'Card', 'mango-latest-posts' ),
+				'label' => __( 'Card', 'shihabiiuc-post-grid' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -251,26 +251,26 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			'card_bg',
 			array(
-				'label'     => __( 'Background color', 'mango-latest-posts' ),
+				'label'     => __( 'Background color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-card-bg: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-card-bg: {{VALUE}};' ),
 			)
 		);
 
 		$this->add_control(
 			'border_color',
 			array(
-				'label'     => __( 'Border color', 'mango-latest-posts' ),
+				'label'     => __( 'Border color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#cfcfcf',
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-border-color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-border-color: {{VALUE}};' ),
 			)
 		);
 
-		$this->add_slider( 'border_width', __( 'Border width', 'mango-latest-posts' ), '--mango-lp-border-width', 1, 20 );
-		$this->add_slider( 'border_radius', __( 'Border radius', 'mango-latest-posts' ), '--mango-lp-radius', 7, 50 );
-		$this->add_slider( 'card_padding', __( 'Inner padding', 'mango-latest-posts' ), '--mango-lp-card-padding', 12, 60, true );
-		$this->add_slider( 'gap', __( 'Gap between cards', 'mango-latest-posts' ), '--mango-lp-gap', 30, 100, true );
+		$this->add_slider( 'border_width', __( 'Border width', 'shihabiiuc-post-grid' ), '--shihabiiuc-pg-border-width', 1, 20 );
+		$this->add_slider( 'border_radius', __( 'Border radius', 'shihabiiuc-post-grid' ), '--shihabiiuc-pg-radius', 7, 50 );
+		$this->add_slider( 'card_padding', __( 'Inner padding', 'shihabiiuc-post-grid' ), '--shihabiiuc-pg-card-padding', 12, 60, true );
+		$this->add_slider( 'gap', __( 'Gap between cards', 'shihabiiuc-post-grid' ), '--shihabiiuc-pg-gap', 30, 100, true );
 
 		$this->end_controls_section();
 	}
@@ -295,10 +295,10 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_control(
 			$key . '_color',
 			array(
-				'label'     => __( 'Color', 'mango-latest-posts' ),
+				'label'     => __( 'Color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => $color,
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-' . $key . '-color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-' . $key . '-color: {{VALUE}};' ),
 			)
 		);
 
@@ -320,7 +320,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_button',
 			array(
-				'label' => __( 'Button', 'mango-latest-posts' ),
+				'label' => __( 'Button', 'shihabiiuc-post-grid' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -329,53 +329,53 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'button_typography',
-				'selector' => '{{WRAPPER}} .mango-lp__button',
+				'selector' => '{{WRAPPER}} .shihabiiuc-pg__button',
 			)
 		);
 
 		$this->start_controls_tabs( 'button_tabs' );
 
-		$this->start_controls_tab( 'button_normal', array( 'label' => __( 'Normal', 'mango-latest-posts' ) ) );
+		$this->start_controls_tab( 'button_normal', array( 'label' => __( 'Normal', 'shihabiiuc-post-grid' ) ) );
 
 		$this->add_control(
 			'button_bg',
 			array(
-				'label'     => __( 'Background color', 'mango-latest-posts' ),
+				'label'     => __( 'Background color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#00a63e',
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-button-bg: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-button-bg: {{VALUE}};' ),
 			)
 		);
 
 		$this->add_control(
 			'button_color',
 			array(
-				'label'     => __( 'Text color', 'mango-latest-posts' ),
+				'label'     => __( 'Text color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-button-color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-button-color: {{VALUE}};' ),
 			)
 		);
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'button_hover', array( 'label' => __( 'Hover', 'mango-latest-posts' ) ) );
+		$this->start_controls_tab( 'button_hover', array( 'label' => __( 'Hover', 'shihabiiuc-post-grid' ) ) );
 
 		$this->add_control(
 			'button_hover_bg',
 			array(
-				'label'     => __( 'Background color', 'mango-latest-posts' ),
+				'label'     => __( 'Background color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-button-hover-bg: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-button-hover-bg: {{VALUE}};' ),
 			)
 		);
 
 		$this->add_control(
 			'button_hover_color',
 			array(
-				'label'     => __( 'Text color', 'mango-latest-posts' ),
+				'label'     => __( 'Text color', 'shihabiiuc-post-grid' ),
 				'type'      => Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .mango-lp' => '--mango-lp-button-hover-color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-button-hover-color: {{VALUE}};' ),
 			)
 		);
 
@@ -386,17 +386,17 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_padding',
 			array(
-				'label'      => __( 'Padding', 'mango-latest-posts' ),
+				'label'      => __( 'Padding', 'shihabiiuc-post-grid' ),
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'separator'  => 'before',
 				'selectors'  => array(
-					'{{WRAPPER}} .mango-lp' => '--mango-lp-button-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .shihabiiuc-pg' => '--shihabiiuc-pg-button-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
 
-		$this->add_slider( 'button_radius', __( 'Border radius', 'mango-latest-posts' ), '--mango-lp-button-radius', 4, 50 );
+		$this->add_slider( 'button_radius', __( 'Border radius', 'shihabiiuc-post-grid' ), '--shihabiiuc-pg-button-radius', 4, 50 );
 
 		$this->end_controls_section();
 	}
@@ -426,7 +426,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 				'unit' => 'px',
 				'size' => $default,
 			),
-			'selectors'  => array( '{{WRAPPER}} .mango-lp' => $css_var . ': {{SIZE}}{{UNIT}};' ),
+			'selectors'  => array( '{{WRAPPER}} .shihabiiuc-pg' => $css_var . ': {{SIZE}}{{UNIT}};' ),
 		);
 
 		if ( $responsive ) {
@@ -480,7 +480,7 @@ class Mango_LP_Elementor_Widget extends Widget_Base {
 		);
 
 		// Columns, colors and sizes are printed by Elementor as CSS, so only content settings are passed.
-		Mango_LP_Renderer::output(
+		Shihabiiuc_PG_Renderer::output(
 			array(
 				'posts'           => $settings['posts'],
 				'layout'          => $settings['layout'],

@@ -1,8 +1,8 @@
 <?php
 /**
- * [mango_latest_posts] shortcode.
+ * [shihabiiuc_post_grid] shortcode.
  *
- * @package MangoLatestPosts
+ * @package ShihabiiucPostGrid
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,12 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Shortcode for classic editor, widgets, other page builders and theme templates.
  *
  * Example:
- * [mango_latest_posts posts="6" columns="3" layout="masonry" excerpt_words="20" category="news,tips"
+ * [shihabiiuc_post_grid posts="6" columns="3" layout="masonry" excerpt_words="20" category="news,tips"
  *  read_more_text="Continue reading" title_color="#111111" button_bg="#ff6600"]
  */
-class Mango_LP_Shortcode {
+class Shihabiiuc_PG_Shortcode {
 
-	const TAG = 'mango_latest_posts';
+	const TAG = 'shihabiiuc_post_grid';
 
 	/**
 	 * Register the shortcode.
@@ -34,7 +34,7 @@ class Mango_LP_Shortcode {
 	 * @return string
 	 */
 	public static function render( $atts ) {
-		$defaults = Mango_LP_Renderer::defaults();
+		$defaults = Shihabiiuc_PG_Renderer::defaults();
 		unset( $defaults['inline_styles'], $defaults['categories'] );
 		$defaults['category'] = '';
 
@@ -43,6 +43,6 @@ class Mango_LP_Shortcode {
 		$atts['categories'] = $atts['category'];
 		unset( $atts['category'] );
 
-		return Mango_LP_Renderer::render( $atts );
+		return Shihabiiuc_PG_Renderer::render( $atts );
 	}
 }

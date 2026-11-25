@@ -1,4 +1,4 @@
-=== Mango Latest Posts for Elementor and Beyond ===
+=== Shihabiiuc Post Grid ===
 Contributors: shihab0915
 Tags: latest posts, recent posts, blog grid, elementor, shortcode
 Requires at least: 6.3
@@ -12,13 +12,13 @@ Show your latest blog posts in a clean card grid or masonry layout. Works with E
 
 == Description ==
 
-**Mango Latest Posts** shows your newest blog posts as cards. Each card has a featured image, the post title, a short excerpt and a "Read More" button. The image, title and button all link to the post.
+**Shihabiiuc Post Grid** shows your newest blog posts as cards. Each card has a featured image, the post title, a short excerpt and a "Read More" button. The image, title and button all link to the post.
 
 It works almost anywhere:
 
-* **Elementor:** drag the **Mango Blog Grid** widget onto your page.
-* **Block editor (Gutenberg):** add the **Mango Blog Grid** block.
-* **Any other theme or page builder:** use the `[mango_latest_posts]` shortcode.
+* **Elementor:** drag the **Shihabiiuc Post Grid** widget onto your page.
+* **Block editor (Gutenberg):** add the **Shihabiiuc Post Grid** block.
+* **Any other theme or page builder:** use the `[shihabiiuc_post_grid]` shortcode.
 
 Elementor is **not** required. If Elementor is installed, the widget appears automatically.
 
@@ -41,11 +41,11 @@ Elementor is **not** required. If Elementor is installed, the widget appears aut
 
 The basic shortcode shows the 3 latest posts:
 
-`[mango_latest_posts]`
+`[shihabiiuc_post_grid]`
 
 Every option is available as an attribute:
 
-`[mango_latest_posts posts="6" columns="3" layout="masonry" excerpt_words="20" category="news,tips" offset="0" exclude_current="yes" read_more_text="Continue reading" title_color="#111111" title_font_size="22" excerpt_color="#555555" excerpt_font_size="15" button_bg="#ff6600" button_color="#ffffff" button_font_size="14" button_padding="10px 22px"]`
+`[shihabiiuc_post_grid posts="6" columns="3" layout="masonry" excerpt_words="20" category="news,tips" offset="0" exclude_current="yes" read_more_text="Continue reading" title_color="#111111" title_font_size="22" excerpt_color="#555555" excerpt_font_size="15" button_bg="#ff6600" button_color="#ffffff" button_font_size="14" button_padding="10px 22px"]`
 
 **Content attributes**
 
@@ -72,11 +72,11 @@ This plugin is built and maintained by Shihab, a WordPress developer. If you nee
 
 == Installation ==
 
-1. In your WordPress dashboard, go to **Plugins → Add New**, search for "Mango Latest Posts", then install and activate it.
+1. In your WordPress dashboard, go to **Plugins → Add New**, search for "Shihabiiuc Post Grid", then install and activate it.
 2. Add the grid in one of these ways:
-   * **Elementor:** search for "Mango Blog Grid" in the widget panel.
-   * **Block editor:** add the "Mango Blog Grid" block.
-   * **Anywhere else:** paste `[mango_latest_posts]` into a Shortcode block, text widget, or your page builder's shortcode element.
+   * **Elementor:** search for "Shihabiiuc Post Grid" in the widget panel.
+   * **Block editor:** add the "Shihabiiuc Post Grid" block.
+   * **Anywhere else:** paste `[shihabiiuc_post_grid]` into a Shortcode block, text widget, or your page builder's shortcode element.
 
 == Frequently Asked Questions ==
 
@@ -94,13 +94,13 @@ The grid always shows images at 1200 × 628 using CSS. For the sharpest crop on 
 
 = Can I change the placeholder image? =
 
-Yes. Use the `mango_lp_placeholder_image_url` filter:
+Yes. Use the `shihabiiuc_pg_placeholder_image_url` filter:
 
-`add_filter( 'mango_lp_placeholder_image_url', function () { return 'https://example.com/my-placeholder.jpg'; } );`
+`add_filter( 'shihabiiuc_pg_placeholder_image_url', function () { return 'https://example.com/my-placeholder.jpg'; } );`
 
 = Can I change the query? =
 
-Yes. Use the `mango_lp_query_args` filter to change the `WP_Query` arguments.
+Yes. Use the `shihabiiuc_pg_query_args` filter to change the `WP_Query` arguments.
 
 == Screenshots ==
 

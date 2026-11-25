@@ -1,8 +1,8 @@
 /**
- * Mango Blog Grid block (editor).
+ * Shihabiiuc Post Grid block (editor).
  *
  * Plain JavaScript using the WordPress globals, so no build step is needed.
- * The front end is rendered in PHP (see includes/class-mango-lp-block.php).
+ * The front end is rendered in PHP (see includes/class-shihabiiuc-pg-block.php).
  */
 ( function ( wp ) {
 	'use strict';
@@ -35,7 +35,7 @@
 			max: max,
 			allowReset: true,
 			initialPosition: placeholder,
-			help: undefined === value ? __( 'Default:', 'mango-latest-posts' ) + ' ' + placeholder + 'px' : undefined,
+			help: undefined === value ? __( 'Default:', 'shihabiiuc-post-grid' ) + ' ' + placeholder + 'px' : undefined,
 		} );
 	}
 
@@ -52,15 +52,15 @@
 			return el( Spinner );
 		}
 		if ( ! categories.length ) {
-			return el( 'p', null, __( 'No categories with posts found.', 'mango-latest-posts' ) );
+			return el( 'p', null, __( 'No categories with posts found.', 'shihabiiuc-post-grid' ) );
 		}
 
 		var selected = props.value || [];
 
 		return el(
 			'div',
-			{ className: 'mango-lp-category-picker' },
-			el( 'p', null, __( 'Categories (leave empty for all):', 'mango-latest-posts' ) ),
+			{ className: 'shihabiiuc-pg-category-picker' },
+			el( 'p', null, __( 'Categories (leave empty for all):', 'shihabiiuc-post-grid' ) ),
 			categories.map( function ( category ) {
 				return el( CheckboxControl, {
 					key: category.id,
@@ -80,7 +80,7 @@
 		);
 	}
 
-	registerBlockType( 'mango-latest-posts/blog-grid', {
+	registerBlockType( 'shihabiiuc-post-grid/blog-grid', {
 		edit: function ( props ) {
 			var a = props.attributes;
 			var set = function ( key ) {
@@ -96,51 +96,51 @@
 				null,
 				el(
 					PanelBody,
-					{ title: __( 'Content', 'mango-latest-posts' ), initialOpen: true },
+					{ title: __( 'Content', 'shihabiiuc-post-grid' ), initialOpen: true },
 					el( RangeControl, {
-						label: __( 'Number of posts', 'mango-latest-posts' ),
+						label: __( 'Number of posts', 'shihabiiuc-post-grid' ),
 						value: a.posts,
 						onChange: set( 'posts' ),
 						min: 1,
 						max: 24,
 					} ),
 					el( SelectControl, {
-						label: __( 'Layout', 'mango-latest-posts' ),
+						label: __( 'Layout', 'shihabiiuc-post-grid' ),
 						value: a.layout,
 						options: [
-							{ label: __( 'Equal-height grid', 'mango-latest-posts' ), value: 'grid' },
-							{ label: __( 'Masonry grid', 'mango-latest-posts' ), value: 'masonry' },
+							{ label: __( 'Equal-height grid', 'shihabiiuc-post-grid' ), value: 'grid' },
+							{ label: __( 'Masonry grid', 'shihabiiuc-post-grid' ), value: 'masonry' },
 						],
 						onChange: set( 'layout' ),
 						help:
 							'masonry' === a.layout
-								? __( 'Images keep their original proportions.', 'mango-latest-posts' )
-								: __( 'Images are cropped to 1200 × 628 from the center.', 'mango-latest-posts' ),
+								? __( 'Images keep their original proportions.', 'shihabiiuc-post-grid' )
+								: __( 'Images are cropped to 1200 × 628 from the center.', 'shihabiiuc-post-grid' ),
 					} ),
 					el( RangeControl, {
-						label: __( 'Columns (desktop)', 'mango-latest-posts' ),
+						label: __( 'Columns (desktop)', 'shihabiiuc-post-grid' ),
 						value: a.columns,
 						onChange: set( 'columns' ),
 						min: 1,
 						max: 4,
-						help: __( 'Tablets show up to 2 columns and phones show 1.', 'mango-latest-posts' ),
+						help: __( 'Tablets show up to 2 columns and phones show 1.', 'shihabiiuc-post-grid' ),
 					} ),
 					el( RangeControl, {
-						label: __( 'Excerpt length (words)', 'mango-latest-posts' ),
+						label: __( 'Excerpt length (words)', 'shihabiiuc-post-grid' ),
 						value: a.excerptWords,
 						onChange: set( 'excerptWords' ),
 						min: 0,
 						max: 100,
-						help: __( 'Set to 0 to hide the excerpt.', 'mango-latest-posts' ),
+						help: __( 'Set to 0 to hide the excerpt.', 'shihabiiuc-post-grid' ),
 					} ),
 					el( TextControl, {
-						label: __( 'Button text', 'mango-latest-posts' ),
+						label: __( 'Button text', 'shihabiiuc-post-grid' ),
 						value: a.readMoreText,
-						placeholder: __( 'Read More', 'mango-latest-posts' ),
+						placeholder: __( 'Read More', 'shihabiiuc-post-grid' ),
 						onChange: set( 'readMoreText' ),
 					} ),
 					el( SelectControl, {
-						label: __( 'Title HTML tag', 'mango-latest-posts' ),
+						label: __( 'Title HTML tag', 'shihabiiuc-post-grid' ),
 						value: a.titleTag,
 						options: [ 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'div' ].map( function ( tag ) {
 							return { label: tag.toUpperCase(), value: tag };
@@ -150,53 +150,53 @@
 				),
 				el(
 					PanelBody,
-					{ title: __( 'Query', 'mango-latest-posts' ), initialOpen: false },
+					{ title: __( 'Query', 'shihabiiuc-post-grid' ), initialOpen: false },
 					el( CategoryPicker, { value: a.categories, onChange: set( 'categories' ) } ),
 					el( RangeControl, {
-						label: __( 'Offset (skip the newest posts)', 'mango-latest-posts' ),
+						label: __( 'Offset (skip the newest posts)', 'shihabiiuc-post-grid' ),
 						value: a.offset,
 						onChange: set( 'offset' ),
 						min: 0,
 						max: 50,
 					} ),
 					el( ToggleControl, {
-						label: __( 'Hide the current post on single post pages', 'mango-latest-posts' ),
+						label: __( 'Hide the current post on single post pages', 'shihabiiuc-post-grid' ),
 						checked: a.excludeCurrent,
 						onChange: set( 'excludeCurrent' ),
 					} )
 				),
 				el( PanelColorSettings, {
-					title: __( 'Colors', 'mango-latest-posts' ),
+					title: __( 'Colors', 'shihabiiuc-post-grid' ),
 					initialOpen: false,
 					colorSettings: [
-						{ label: __( 'Title', 'mango-latest-posts' ), value: a.titleColor, onChange: set( 'titleColor' ) },
-						{ label: __( 'Excerpt', 'mango-latest-posts' ), value: a.excerptColor, onChange: set( 'excerptColor' ) },
-						{ label: __( 'Button background', 'mango-latest-posts' ), value: a.buttonBg, onChange: set( 'buttonBg' ) },
-						{ label: __( 'Button text', 'mango-latest-posts' ), value: a.buttonColor, onChange: set( 'buttonColor' ) },
-						{ label: __( 'Card background', 'mango-latest-posts' ), value: a.cardBg, onChange: set( 'cardBg' ) },
-						{ label: __( 'Card border', 'mango-latest-posts' ), value: a.borderColor, onChange: set( 'borderColor' ) },
+						{ label: __( 'Title', 'shihabiiuc-post-grid' ), value: a.titleColor, onChange: set( 'titleColor' ) },
+						{ label: __( 'Excerpt', 'shihabiiuc-post-grid' ), value: a.excerptColor, onChange: set( 'excerptColor' ) },
+						{ label: __( 'Button background', 'shihabiiuc-post-grid' ), value: a.buttonBg, onChange: set( 'buttonBg' ) },
+						{ label: __( 'Button text', 'shihabiiuc-post-grid' ), value: a.buttonColor, onChange: set( 'buttonColor' ) },
+						{ label: __( 'Card background', 'shihabiiuc-post-grid' ), value: a.cardBg, onChange: set( 'cardBg' ) },
+						{ label: __( 'Card border', 'shihabiiuc-post-grid' ), value: a.borderColor, onChange: set( 'borderColor' ) },
 					],
 				} ),
 				el(
 					PanelBody,
-					{ title: __( 'Typography', 'mango-latest-posts' ), initialOpen: false },
-					px( __( 'Title font size', 'mango-latest-posts' ), a.titleFontSize, set( 'titleFontSize' ), 10, 60, 20 ),
-					px( __( 'Excerpt font size', 'mango-latest-posts' ), a.excerptFontSize, set( 'excerptFontSize' ), 10, 40, 15 ),
-					px( __( 'Button font size', 'mango-latest-posts' ), a.buttonFontSize, set( 'buttonFontSize' ), 10, 40, 14 )
+					{ title: __( 'Typography', 'shihabiiuc-post-grid' ), initialOpen: false },
+					px( __( 'Title font size', 'shihabiiuc-post-grid' ), a.titleFontSize, set( 'titleFontSize' ), 10, 60, 20 ),
+					px( __( 'Excerpt font size', 'shihabiiuc-post-grid' ), a.excerptFontSize, set( 'excerptFontSize' ), 10, 40, 15 ),
+					px( __( 'Button font size', 'shihabiiuc-post-grid' ), a.buttonFontSize, set( 'buttonFontSize' ), 10, 40, 14 )
 				),
 				el(
 					PanelBody,
-					{ title: __( 'Button', 'mango-latest-posts' ), initialOpen: false },
-					px( __( 'Vertical padding', 'mango-latest-posts' ), a.buttonPaddingY, set( 'buttonPaddingY' ), 0, 60, 10 ),
-					px( __( 'Horizontal padding', 'mango-latest-posts' ), a.buttonPaddingX, set( 'buttonPaddingX' ), 0, 100, 22 )
+					{ title: __( 'Button', 'shihabiiuc-post-grid' ), initialOpen: false },
+					px( __( 'Vertical padding', 'shihabiiuc-post-grid' ), a.buttonPaddingY, set( 'buttonPaddingY' ), 0, 60, 10 ),
+					px( __( 'Horizontal padding', 'shihabiiuc-post-grid' ), a.buttonPaddingX, set( 'buttonPaddingX' ), 0, 100, 22 )
 				),
 				el(
 					PanelBody,
-					{ title: __( 'Card', 'mango-latest-posts' ), initialOpen: false },
-					px( __( 'Border width', 'mango-latest-posts' ), a.borderWidth, set( 'borderWidth' ), 0, 20, 1 ),
-					px( __( 'Border radius', 'mango-latest-posts' ), a.borderRadius, set( 'borderRadius' ), 0, 50, 7 ),
-					px( __( 'Inner padding', 'mango-latest-posts' ), a.cardPadding, set( 'cardPadding' ), 0, 60, 12 ),
-					px( __( 'Gap between cards', 'mango-latest-posts' ), a.gap, set( 'gap' ), 0, 100, 30 )
+					{ title: __( 'Card', 'shihabiiuc-post-grid' ), initialOpen: false },
+					px( __( 'Border width', 'shihabiiuc-post-grid' ), a.borderWidth, set( 'borderWidth' ), 0, 20, 1 ),
+					px( __( 'Border radius', 'shihabiiuc-post-grid' ), a.borderRadius, set( 'borderRadius' ), 0, 50, 7 ),
+					px( __( 'Inner padding', 'shihabiiuc-post-grid' ), a.cardPadding, set( 'cardPadding' ), 0, 60, 12 ),
+					px( __( 'Gap between cards', 'shihabiiuc-post-grid' ), a.gap, set( 'gap' ), 0, 100, 30 )
 				)
 			);
 
@@ -211,7 +211,7 @@
 						Disabled,
 						null,
 						el( ServerSideRender, {
-							block: 'mango-latest-posts/blog-grid',
+							block: 'shihabiiuc-post-grid/blog-grid',
 							attributes: a,
 						} )
 					)

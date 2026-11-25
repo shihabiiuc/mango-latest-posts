@@ -2,7 +2,7 @@
 /**
  * Editor script dependencies (the script is plain JavaScript, no build step).
  *
- * @package MangoLatestPosts
+ * @package ShihabiiucPostGrid
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,5 +20,5 @@ return array(
 		'wp-i18n',
 		'wp-server-side-render',
 	),
-	'version'      => MANGO_LP_VERSION,
+	'version'      => SHIHABIIUC_PG_VERSION,
 );

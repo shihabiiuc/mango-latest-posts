@@ -1,8 +1,8 @@
 <?php
 /**
- * Gutenberg block: Mango Blog Grid.
+ * Gutenberg block: Shihabiiuc Post Grid.
  *
- * @package MangoLatestPosts
+ * @package ShihabiiucPostGrid
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Registers the dynamic block and renders it on the server.
  */
-class Mango_LP_Block {
+class Shihabiiuc_PG_Block {
 
 	/**
 	 * Block attribute => renderer setting. Numbers are pixels.
@@ -49,13 +49,13 @@ class Mango_LP_Block {
 	 */
 	public static function register() {
 		register_block_type(
-			MANGO_LP_DIR . 'blocks/blog-grid',
+			SHIHABIIUC_PG_DIR . 'blocks/blog-grid',
 			array(
 				'render_callback' => array( __CLASS__, 'render' ),
 			)
 		);
 
-		wp_set_script_translations( 'mango-latest-posts-blog-grid-editor-script', 'mango-latest-posts' );
+		wp_set_script_translations( 'shihabiiuc-post-grid-blog-grid-editor-script', 'shihabiiuc-post-grid' );
 	}
 
 	/**
@@ -81,7 +81,7 @@ class Mango_LP_Block {
 			);
 		}
 
-		$html = Mango_LP_Renderer::render( $args );
+		$html = Shihabiiuc_PG_Renderer::render( $args );
 
 		if ( '' === $html ) {
 			return '';
